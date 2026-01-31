@@ -22,7 +22,7 @@ public abstract class BasePower extends AbstractPower {
     protected String[] DESCRIPTIONS;
 
     //Will not display if at 0. You can override renderAmount to render it however you want.
-    //amount2 will not stack like the normal amount variable when stacking a power.
+    //amount2 will not stack like the character amount variable when stacking a power.
     public int amount2 = 0;
     protected Color redColor2 = Color.RED.cpy();
     protected Color greenColor2 = Color.GREEN.cpy();

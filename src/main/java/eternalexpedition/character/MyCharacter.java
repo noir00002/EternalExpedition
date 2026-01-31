@@ -35,7 +35,7 @@ public class MyCharacter extends CustomPlayer {
     public static final int ORB_SLOTS = 0;
 
     //Strings
-    private static final String ID = BasicMod.makeID("CharacterID"); //This should match whatever you have in the CharacterStrings.json file
+    private static final String ID = BasicMod.makeID("PaladinID"); //This should match whatever you have in the CharacterStrings.json file
     private static String[] getNames() { return CardCrawlGame.languagePack.getCharacterString(ID).NAMES; }
     private static String[] getText() { return CardCrawlGame.languagePack.getCharacterString(ID).TEXT; }
 

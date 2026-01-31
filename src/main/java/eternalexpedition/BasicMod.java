@@ -1,12 +1,11 @@
 package eternalexpedition;
 
+import basemod.AutoAdd;
 import basemod.BaseMod;
-import basemod.interfaces.AddAudioSubscriber;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
-import basemod.interfaces.EditCharactersSubscriber; // add by Brady
+import basemod.interfaces.*;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eternalexpedition.character.MyCharacter;
+import eternalexpedition.relics.BaseRelic;
 import eternalexpedition.util.GeneralUtils;
 import eternalexpedition.util.KeywordInfo;
 import eternalexpedition.util.Sounds;
@@ -35,6 +34,7 @@ import java.util.*;
 
 @SpireInitializer
 public class BasicMod implements
+        EditRelicsSubscriber,
         EditCharactersSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
@@ -61,7 +61,23 @@ public class BasicMod implements
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");
     }
+    // Add by Brady
+    @Override
+    public void receiveEditRelics() { //somewhere in the class
+        new AutoAdd(modID) //Loads files from this mod
+                .packageFilter(BaseRelic.class) //In the same package as this class
+                .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
+                    if (relic.pool != null)
+                        BaseMod.addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
+                    else
+                        BaseMod.addRelic(relic, relic.relicType); //Register a shared or base game character specific relic
 
+                    //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
+                    //If you want all your relics to be visible by default, just remove this if statement.
+                    if (info.seen)
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                });
+    }
     // Add by Brady
     @Override
     public void receiveEditCharacters() {
