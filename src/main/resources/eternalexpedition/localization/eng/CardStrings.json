@@ -23,5 +23,10 @@
     "NAME": "Burning Will",
     "DESCRIPTION": "Deal !M!x(Determination) damage to ALL enemies. NL Gain 1 Determination.",
     "UPGRADE_DESCRIPTION": "Deal !M!x(Determination) damage to ALL enemies. NL Gain 1 Determination."
+  },
+  "${modID}:PaladinRarePlaceholder": {
+    "NAME": "Inner Fortitude",
+    "DESCRIPTION": "Draw !M! cards.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards."
   }
 }
