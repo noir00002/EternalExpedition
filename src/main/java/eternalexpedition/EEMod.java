@@ -3,7 +3,6 @@
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eternalexpedition.character.Paladin;
 import eternalexpedition.relics.BaseRelic;
@@ -48,16 +47,6 @@ public class EEMod implements
     static { loadModInfo(); }
     private static final String resourcesFolder = checkResourcesPath();
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
-    // add by Brady
-    private static final String ATTACK_S_ART = modID + "Resources/eternalexpedition/images/cards/attack/default.png";
-    private static final String SKILL_S_ART = modID + "Resources/eternalexpedition/images/cards/skill/default.png";
-    private static final String POWER_S_ART = modID + "Resources/eternalexpedition/images/cards/power/default.png";
-    private static final String CARD_ENERGY_S = modID + "Resources/eternalexpedition/images/cards/power/default.png";
-    private static final String TEXT_ENERGY = modID + "Resources/eternalexpedition/images/cards/power/default.png";
-    private static final String ATTACK_L_ART = modID + "Resources/eternalexpedition/images/cards/attack/default_p.png";
-    private static final String SKILL_L_ART = modID + "Resources/eternalexpedition/images/cards/skill/default_p.png";
-    private static final String POWER_L_ART = modID + "Resources/eternalexpedition/images/cards/power/default_p.png";
-    private static final String CARD_ENERGY_L = modID + "Resources/eternalexpedition/images/cards/power/default_p.png";
 
     //This is used to prefix the IDs of various objects like cards and relics,
     //to avoid conflicts between different mods using the same name for things.
@@ -74,12 +63,7 @@ public class EEMod implements
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");
         logger.info(modID + " EEMod - Brady's version");
-        //
-        BaseMod.addColor(Paladin.Meta.CARD_COLOR, Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(),
-                Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(),
-                ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
-                ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
-                CARD_ENERGY_L, TEXT_ENERGY);
+        Paladin.Meta.registerColor();
     }
     // Add by Brady
     @Override
