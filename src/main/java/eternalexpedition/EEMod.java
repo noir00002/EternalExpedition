@@ -3,8 +3,9 @@
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import eternalexpedition.cards.BaseCard;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import eternalexpedition.cards.BaseCard;
 import eternalexpedition.character.Paladin;
 import eternalexpedition.relics.BaseRelic;
 import eternalexpedition.util.GeneralUtils;
@@ -71,7 +72,11 @@ public class EEMod implements
     public void receiveEditCards() {
         new AutoAdd(modID)
                 .packageFilter(BaseCard.class)
-                .any(BaseCard.class, (info, card) -> BaseMod.addCard(card));
+                .any(AbstractCard.class, (info, card) -> {
+                    BaseMod.addCard(card);
+                    if (info.seen)
+                        UnlockTracker.markCardAsSeen(card.cardID);
+                });
     }
 
     // Add by Brady

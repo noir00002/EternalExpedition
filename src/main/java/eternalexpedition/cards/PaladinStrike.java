@@ -14,7 +14,7 @@ public class PaladinStrike extends BaseCard {
     private static final CardStats INFO = new CardStats(
             Paladin.Meta.CARD_COLOR,
             CardType.ATTACK,
-            CardRarity.BASIC,
+            CardRarity.COMMON,
             CardTarget.ENEMY,
             1
     );

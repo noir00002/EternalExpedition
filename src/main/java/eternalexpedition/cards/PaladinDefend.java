@@ -12,7 +12,7 @@ public class PaladinDefend extends BaseCard {
     private static final CardStats INFO = new CardStats(
             Paladin.Meta.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.BASIC,
+            CardRarity.COMMON,
             CardTarget.SELF,
             1
     );
