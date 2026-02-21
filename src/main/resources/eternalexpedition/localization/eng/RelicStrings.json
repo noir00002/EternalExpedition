@@ -6,7 +6,7 @@
       "Gain [E] at the start of your turn. [E] is an energy icon."
     ]
   },
-  "${modID}:Zora Ring": {
+  "${modID}:ZoraRing": {
     "NAME": "Zora Ring",
     "FLAVOR": "QQQ",
     "DESCRIPTIONS": [

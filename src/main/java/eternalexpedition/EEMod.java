@@ -1,10 +1,12 @@
-package eternalexpedition;
+    package eternalexpedition;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import eternalexpedition.character.MyCharacter;
+import eternalexpedition.character.Paladin;
 import eternalexpedition.relics.BaseRelic;
 import eternalexpedition.util.GeneralUtils;
 import eternalexpedition.util.KeywordInfo;
@@ -32,9 +34,12 @@ import java.lang.reflect.Modifier;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+import static basemod.BaseMod.addRelicToCustomPool;
+
 @SpireInitializer
-public class BasicMod implements
+public class EEMod implements
         EditRelicsSubscriber,
+        PostCreateStartingRelicsSubscriber,
         EditCharactersSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
@@ -45,6 +50,16 @@ public class BasicMod implements
     static { loadModInfo(); }
     private static final String resourcesFolder = checkResourcesPath();
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
+    // add by Brady
+    private static final String ATTACK_S_ART = modID + "Resources/eternalexpedition/images/cards/attack/default.png";
+    private static final String SKILL_S_ART = modID + "Resources/eternalexpedition/images/cards/skill/default.png";
+    private static final String POWER_S_ART = modID + "Resources/eternalexpedition/images/cards/power/default.png";
+    private static final String CARD_ENERGY_S = modID + "Resources/eternalexpedition/images/cards/power/default.png";
+    private static final String TEXT_ENERGY = modID + "Resources/eternalexpedition/images/cards/power/default.png";
+    private static final String ATTACK_L_ART = modID + "Resources/eternalexpedition/images/cards/attack/default_p.png";
+    private static final String SKILL_L_ART = modID + "Resources/eternalexpedition/images/cards/skill/default_p.png";
+    private static final String POWER_L_ART = modID + "Resources/eternalexpedition/images/cards/power/default_p.png";
+    private static final String CARD_ENERGY_L = modID + "Resources/eternalexpedition/images/cards/power/default_p.png";
 
     //This is used to prefix the IDs of various objects like cards and relics,
     //to avoid conflicts between different mods using the same name for things.
@@ -54,21 +69,63 @@ public class BasicMod implements
 
     //This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
-        new BasicMod();
+        new EEMod();
     }
 
-    public BasicMod() {
+    public EEMod() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");
+        logger.info(modID + " EEMod - Brady's version");
+        //
+        BaseMod.addColor(Paladin.Meta.CARD_COLOR, Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(),
+                Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(), Color.LIGHT_GRAY.cpy(),
+                ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
+                ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
+                CARD_ENERGY_L, TEXT_ENERGY);
+    }
+    @Override
+    public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> arrayList) {
+        logger.info(modID + " receivePostCreateStartingRelics.");
+        // Add by Brady
+        BaseRelic zoraRing = new eternalexpedition.relics.character.ZoraRing();
+        BaseMod.addRelicToCustomPool(zoraRing, Paladin.Meta.CARD_COLOR);
+        //BaseMod.add
+        logger.info(modID + " add ZoraRing relic manually.");
+        //
+        UnlockTracker.markRelicAsSeen(zoraRing.relicId);
+        arrayList.add("Zora Ring");
+        /*
+        logger.info(modID + " add ZoraRing relic automatically.");
+        new AutoAdd(modID) //Loads files from this mod
+                .packageFilter("eternalexpedition.relics.character")
+                .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
+                    if (relic.pool != null)
+                        addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
+                    else
+                        BaseMod.addRelic(relic, relic.relicType); //Register a shared or base game character specific relic
+
+                    //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
+                    //If you want all your relics to be visible by default, just remove this if statement.
+                    if (info.seen)
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                });
+         */
     }
     // Add by Brady
     @Override
     public void receiveEditRelics() { //somewhere in the class
+        logger.info(modID + " receiveEditRelics.");
+        // Add by Brady
+        BaseRelic zoraRing = new eternalexpedition.relics.character.ZoraRing();
+        BaseMod.addRelic(zoraRing, zoraRing.relicType);
+        logger.info(modID + " add ZoraRing relic manually.");
+        //
         new AutoAdd(modID) //Loads files from this mod
-                .packageFilter(BaseRelic.class) //In the same package as this class
+                .packageFilter("eternalexpedition.relics.character")
+                //.packageFilter(BaseRelic.class) //In the same package as this class
                 .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
                     if (relic.pool != null)
-                        BaseMod.addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
+                        addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
                     else
                         BaseMod.addRelic(relic, relic.relicType); //Register a shared or base game character specific relic
 
@@ -81,7 +138,7 @@ public class BasicMod implements
     // Add by Brady
     @Override
     public void receiveEditCharacters() {
-        MyCharacter.Meta.registerCharacter();
+        Paladin.Meta.registerCharacter();
     }
 
     @Override
@@ -252,7 +309,7 @@ public class BasicMod implements
      * Checks the expected resources path based on the package name.
      */
     private static String checkResourcesPath() {
-        String name = BasicMod.class.getName(); //getPackage can be iffy with patching, so class name is used instead.
+        String name = EEMod.class.getName(); //getPackage can be iffy with patching, so class name is used instead.
         int separator = name.indexOf('.');
         if (separator > 0)
             name = name.substring(0, separator);
@@ -263,7 +320,7 @@ public class BasicMod implements
             throw new RuntimeException("\n\tFailed to find resources folder; expected it to be at  \"resources/" + name + "\"." +
                     " Either make sure the folder under resources has the same name as your mod's package, or change the line\n" +
                     "\t\"private static final String resourcesFolder = checkResourcesPath();\"\n" +
-                    "\tat the top of the " + BasicMod.class.getSimpleName() + " java file.");
+                    "\tat the top of the " + EEMod.class.getSimpleName() + " java file.");
         }
         if (!resources.child("images").exists()) {
             throw new RuntimeException("\n\tFailed to find the 'images' folder in the mod's 'resources/" + name + "' folder; Make sure the " +
@@ -286,7 +343,7 @@ public class BasicMod implements
             if (annotationDB == null)
                 return false;
             Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
-            return initializers.contains(BasicMod.class.getName());
+            return initializers.contains(EEMod.class.getName());
         }).findFirst();
         if (infos.isPresent()) {
             info = infos.get();

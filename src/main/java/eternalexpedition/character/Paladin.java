@@ -22,11 +22,11 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import eternalexpedition.BasicMod;
+import eternalexpedition.EEMod;
 
 import java.util.ArrayList;
 
-public class MyCharacter extends CustomPlayer {
+public class Paladin extends CustomPlayer {
     //Stats
     public static final int ENERGY_PER_TURN = 3;
     public static final int MAX_HP = 70;
@@ -35,7 +35,7 @@ public class MyCharacter extends CustomPlayer {
     public static final int ORB_SLOTS = 0;
 
     //Strings
-    private static final String ID = BasicMod.makeID("PaladinID"); //This should match whatever you have in the CharacterStrings.json file
+    private static final String ID = EEMod.makeID("PaladinID"); //This should match whatever you have in the CharacterStrings.json file
     private static String[] getNames() { return CardCrawlGame.languagePack.getCharacterString(ID).NAMES; }
     private static String[] getText() { return CardCrawlGame.languagePack.getCharacterString(ID).TEXT; }
 
@@ -44,26 +44,26 @@ public class MyCharacter extends CustomPlayer {
         //These are used to identify your character, as well as your character's card color.
         //Library color is basically the same as card color, but you need both because that's how the game was made.
         @SpireEnum
-        public static PlayerClass YOUR_CHARACTER;
+        public static PlayerClass PALADIN;
         @SpireEnum(name = "CHARACTER_GRAY_COLOR") // These two MUST match. Change it to something unique for your character.
         public static AbstractCard.CardColor CARD_COLOR;
         @SpireEnum(name = "CHARACTER_GRAY_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         //Character select images
-        private static final String CHAR_SELECT_BUTTON = BasicMod.characterPath("select/button.png");
-        private static final String CHAR_SELECT_PORTRAIT = BasicMod.characterPath("select/portrait.png");
+        private static final String CHAR_SELECT_BUTTON = EEMod.characterPath("select/button.png");
+        private static final String CHAR_SELECT_PORTRAIT = EEMod.characterPath("select/portrait.png");
 
         //Character card images
-        private static final String BG_ATTACK = BasicMod.characterPath("cardback/bg_attack.png");
-        private static final String BG_ATTACK_P = BasicMod.characterPath("cardback/bg_attack_p.png");
-        private static final String BG_SKILL = BasicMod.characterPath("cardback/bg_skill.png");
-        private static final String BG_SKILL_P = BasicMod.characterPath("cardback/bg_skill_p.png");
-        private static final String BG_POWER = BasicMod.characterPath("cardback/bg_power.png");
-        private static final String BG_POWER_P = BasicMod.characterPath("cardback/bg_power_p.png");
-        private static final String ENERGY_ORB = BasicMod.characterPath("cardback/energy_orb.png");
-        private static final String ENERGY_ORB_P = BasicMod.characterPath("cardback/energy_orb_p.png");
-        private static final String SMALL_ORB = BasicMod.characterPath("cardback/small_orb.png");
+        private static final String BG_ATTACK = EEMod.characterPath("cardback/bg_attack.png");
+        private static final String BG_ATTACK_P = EEMod.characterPath("cardback/bg_attack_p.png");
+        private static final String BG_SKILL = EEMod.characterPath("cardback/bg_skill.png");
+        private static final String BG_SKILL_P = EEMod.characterPath("cardback/bg_skill_p.png");
+        private static final String BG_POWER = EEMod.characterPath("cardback/bg_power.png");
+        private static final String BG_POWER_P = EEMod.characterPath("cardback/bg_power_p.png");
+        private static final String ENERGY_ORB = EEMod.characterPath("cardback/energy_orb.png");
+        private static final String ENERGY_ORB_P = EEMod.characterPath("cardback/energy_orb_p.png");
+        private static final String SMALL_ORB = EEMod.characterPath("cardback/small_orb.png");
 
         //This is used to color *some* images, but NOT the actual cards. For that, edit the images in the cardback folder!
         private static final Color cardColor = new Color(128f/255f, 128f/255f, 128f/255f, 1f);
@@ -77,29 +77,29 @@ public class MyCharacter extends CustomPlayer {
         }
 
         public static void registerCharacter() {
-            BaseMod.addCharacter(new MyCharacter(), CHAR_SELECT_BUTTON, CHAR_SELECT_PORTRAIT);
+            BaseMod.addCharacter(new Paladin(), CHAR_SELECT_BUTTON, CHAR_SELECT_PORTRAIT);
         }
     }
 
 
     //In-game images
-    private static final String SHOULDER_1 = BasicMod.characterPath("shoulder.png"); //Shoulder 1 and 2 are used at rest sites.
-    private static final String SHOULDER_2 = BasicMod.characterPath("shoulder2.png");
-    private static final String CORPSE = BasicMod.characterPath("corpse.png"); //Corpse is when you die.
+    private static final String SHOULDER_1 = EEMod.characterPath("shoulder.png"); //Shoulder 1 and 2 are used at rest sites.
+    private static final String SHOULDER_2 = EEMod.characterPath("shoulder2.png");
+    private static final String CORPSE = EEMod.characterPath("corpse.png"); //Corpse is when you die.
 
     //Textures used for the energy orb
     private static final String[] orbTextures = {
-            BasicMod.characterPath("energyorb/layer1.png"), //When you have energy
-            BasicMod.characterPath("energyorb/layer2.png"),
-            BasicMod.characterPath("energyorb/layer3.png"),
-            BasicMod.characterPath("energyorb/layer4.png"),
-            BasicMod.characterPath("energyorb/layer5.png"),
-            BasicMod.characterPath("energyorb/cover.png"), //"container"
-            BasicMod.characterPath("energyorb/layer1d.png"), //When you don't have energy
-            BasicMod.characterPath("energyorb/layer2d.png"),
-            BasicMod.characterPath("energyorb/layer3d.png"),
-            BasicMod.characterPath("energyorb/layer4d.png"),
-            BasicMod.characterPath("energyorb/layer5d.png")
+            EEMod.characterPath("energyorb/layer1.png"), //When you have energy
+            EEMod.characterPath("energyorb/layer2.png"),
+            EEMod.characterPath("energyorb/layer3.png"),
+            EEMod.characterPath("energyorb/layer4.png"),
+            EEMod.characterPath("energyorb/layer5.png"),
+            EEMod.characterPath("energyorb/cover.png"), //"container"
+            EEMod.characterPath("energyorb/layer1d.png"), //When you don't have energy
+            EEMod.characterPath("energyorb/layer2d.png"),
+            EEMod.characterPath("energyorb/layer3d.png"),
+            EEMod.characterPath("energyorb/layer4d.png"),
+            EEMod.characterPath("energyorb/layer5d.png")
     };
 
     //Speeds at which each layer of the energy orb texture rotates. Negative is backwards.
@@ -114,10 +114,10 @@ public class MyCharacter extends CustomPlayer {
 
     //Actual character class code below this point
 
-    public MyCharacter() {
-        super(getNames()[0], Meta.YOUR_CHARACTER,
-                new CustomEnergyOrb(orbTextures, BasicMod.characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
-                new SpriterAnimation(BasicMod.characterPath("animation/default.scml"))); //Animation
+    public Paladin() {
+        super(getNames()[0], Meta.PALADIN,
+                new CustomEnergyOrb(orbTextures, EEMod.characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
+                new SpriterAnimation(EEMod.characterPath("animation/default.scml"))); //Animation
 
         initializeClass(null,
                 SHOULDER_2,
@@ -254,6 +254,6 @@ public class MyCharacter extends CustomPlayer {
     @Override
     public AbstractPlayer newInstance() {
         //Makes a new instance of your character class.
-        return new MyCharacter();
+        return new Paladin();
     }
 }

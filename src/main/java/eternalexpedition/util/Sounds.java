@@ -1,6 +1,6 @@
 package eternalexpedition.util;
 
-import static eternalexpedition.BasicMod.audioPath;
+import static eternalexpedition.EEMod.audioPath;
 
 public class Sounds {
     public static String TEST_SOUND = audioPath("test.wav"); //Load audio using a given path

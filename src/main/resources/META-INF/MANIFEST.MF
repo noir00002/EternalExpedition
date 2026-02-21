@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: eternalexpedition.BasicMod
+Main-Class: eternalexpedition.EEMod
 Class-Path: desktop-1.0.jar ModTheSpire.jar BaseMod.jar StSLib.jar
 
