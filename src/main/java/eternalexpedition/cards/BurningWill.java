@@ -12,6 +12,8 @@ import eternalexpedition.character.Paladin;
 import eternalexpedition.powers.DeterminationPower;
 import eternalexpedition.util.CardStats;
 
+import java.util.Arrays;
+
 public class BurningWill extends BaseCard {
     public static final String ID = makeID("BurningWill");
     private static final int COST = 2;
@@ -29,7 +31,6 @@ public class BurningWill extends BaseCard {
     public BurningWill() {
         super(ID, INFO);
         setMagic(DAMAGE_PER_STACK, DAMAGE_PER_STACK_UPGRADE);
-        this.isMultiDamage = true;
         this.baseDamage = this.damage = 0;
     }
 
@@ -55,7 +56,11 @@ public class BurningWill extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn,
+        // Build damage array manually — all enemies take equal damage (this.damage already has strength applied)
+        int count = AbstractDungeon.getCurrRoom().monsters.monsters.size();
+        int[] dmgs = new int[count];
+        Arrays.fill(dmgs, this.damage);
+        addToBot(new DamageAllEnemiesAction(p, dmgs, damageTypeForTurn,
                 AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(p, p, new DeterminationPower(p, 1), 1));
     }
