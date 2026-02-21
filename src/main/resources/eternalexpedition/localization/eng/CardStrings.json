@@ -8,5 +8,15 @@
       "If you need to use it for stuff.",
       "Blizzard is a good example for this."
     ]
+  },
+  "${modID}:PaladinStrike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:PaladinDefend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! !keyword:block!.",
+    "UPGRADE_DESCRIPTION": "Gain !B! !keyword:block!."
   }
 }

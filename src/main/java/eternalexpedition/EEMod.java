@@ -3,6 +3,7 @@
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
+import eternalexpedition.cards.BaseCard;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eternalexpedition.character.Paladin;
 import eternalexpedition.relics.BaseRelic;
@@ -36,6 +37,7 @@ import static basemod.BaseMod.addRelicToCustomPool;
 
 @SpireInitializer
 public class EEMod implements
+        EditCardsSubscriber,
         EditRelicsSubscriber,
         EditCharactersSubscriber,
         EditStringsSubscriber,
@@ -65,6 +67,13 @@ public class EEMod implements
         logger.info(modID + " EEMod - Brady's version");
         Paladin.Meta.registerColor();
     }
+    @Override
+    public void receiveEditCards() {
+        new AutoAdd(modID)
+                .packageFilter(BaseCard.class)
+                .any(BaseCard.class, (info, card) -> BaseMod.addCard(card));
+    }
+
     // Add by Brady
     @Override
     public void receiveEditRelics() {
