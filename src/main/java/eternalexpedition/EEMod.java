@@ -4,7 +4,6 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eternalexpedition.character.Paladin;
 import eternalexpedition.relics.BaseRelic;
@@ -39,7 +38,6 @@ import static basemod.BaseMod.addRelicToCustomPool;
 @SpireInitializer
 public class EEMod implements
         EditRelicsSubscriber,
-        PostCreateStartingRelicsSubscriber,
         EditCharactersSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
@@ -83,46 +81,12 @@ public class EEMod implements
                 ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
                 CARD_ENERGY_L, TEXT_ENERGY);
     }
-    @Override
-    public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> arrayList) {
-        logger.info(modID + " receivePostCreateStartingRelics.");
-        // Add by Brady
-        BaseRelic zoraRing = new eternalexpedition.relics.character.ZoraRing();
-        BaseMod.addRelicToCustomPool(zoraRing, Paladin.Meta.CARD_COLOR);
-        //BaseMod.add
-        logger.info(modID + " add ZoraRing relic manually.");
-        //
-        UnlockTracker.markRelicAsSeen(zoraRing.relicId);
-        arrayList.add("Zora Ring");
-        /*
-        logger.info(modID + " add ZoraRing relic automatically.");
-        new AutoAdd(modID) //Loads files from this mod
-                .packageFilter("eternalexpedition.relics.character")
-                .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
-                    if (relic.pool != null)
-                        addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
-                    else
-                        BaseMod.addRelic(relic, relic.relicType); //Register a shared or base game character specific relic
-
-                    //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
-                    //If you want all your relics to be visible by default, just remove this if statement.
-                    if (info.seen)
-                        UnlockTracker.markRelicAsSeen(relic.relicId);
-                });
-         */
-    }
     // Add by Brady
     @Override
-    public void receiveEditRelics() { //somewhere in the class
+    public void receiveEditRelics() {
         logger.info(modID + " receiveEditRelics.");
-        // Add by Brady
-        BaseRelic zoraRing = new eternalexpedition.relics.character.ZoraRing();
-        BaseMod.addRelic(zoraRing, zoraRing.relicType);
-        logger.info(modID + " add ZoraRing relic manually.");
-        //
         new AutoAdd(modID) //Loads files from this mod
                 .packageFilter("eternalexpedition.relics.character")
-                //.packageFilter(BaseRelic.class) //In the same package as this class
                 .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
                     if (relic.pool != null)
                         addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic

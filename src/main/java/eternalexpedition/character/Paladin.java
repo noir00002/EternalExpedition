@@ -20,9 +20,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
-import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import eternalexpedition.EEMod;
+import eternalexpedition.relics.character.ZoraRing;
 
 import java.util.ArrayList;
 
@@ -150,7 +150,7 @@ public class Paladin extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         //IDs of starting relics. You can have multiple, but one is recommended.
-        retVal.add(BurningBlood.ID);
+        retVal.add(ZoraRing.ID);
 
         return retVal;
     }
