@@ -18,5 +18,10 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! !keyword:block!.",
     "UPGRADE_DESCRIPTION": "Gain !B! !keyword:block!."
+  },
+  "${modID}:BurningWill": {
+    "NAME": "Burning Will",
+    "DESCRIPTION": "Deal !M!x(Determination) damage to ALL enemies. NL Gain 1 Determination.",
+    "UPGRADE_DESCRIPTION": "Deal !M!x(Determination) damage to ALL enemies. NL Gain 1 Determination."
   }
 }
