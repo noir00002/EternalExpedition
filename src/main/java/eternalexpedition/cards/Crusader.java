@@ -24,7 +24,7 @@ public class Crusader extends BaseCard {
 
     public Crusader() {
         super(ID, INFO);
-        setExhaust(true);
+        setExhaust(true, false);
     }
 
     @Override

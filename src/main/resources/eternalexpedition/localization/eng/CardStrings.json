@@ -57,6 +57,6 @@
   "${modID}:Crusader": {
     "NAME": "Crusader",
     "DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed. Exhaust."
+    "UPGRADE_DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed."
   }
 }
