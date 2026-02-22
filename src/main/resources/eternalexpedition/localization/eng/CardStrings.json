@@ -53,5 +53,10 @@
     "NAME": "Perform Power",
     "DESCRIPTION": "Apply Weak and Vulnerable to ALL enemies equal to your Determination.",
     "UPGRADE_DESCRIPTION": "Apply Weak and Vulnerable to ALL enemies equal to your Determination."
+  },
+  "${modID}:Crusader": {
+    "NAME": "Crusader",
+    "DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed. Exhaust."
   }
 }
