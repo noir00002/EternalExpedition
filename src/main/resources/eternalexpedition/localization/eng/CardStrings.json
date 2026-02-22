@@ -48,5 +48,10 @@
     "NAME": "Divine Sense of Determination",
     "DESCRIPTION": "At the start of each turn, gain !M! Determination.",
     "UPGRADE_DESCRIPTION": "At the start of each turn, gain !M! Determination."
+  },
+  "${modID}:PerformPower": {
+    "NAME": "Perform Power",
+    "DESCRIPTION": "Apply Weak and Vulnerable to ALL enemies equal to your Determination.",
+    "UPGRADE_DESCRIPTION": "Apply Weak and Vulnerable to ALL enemies equal to your Determination."
   }
 }
