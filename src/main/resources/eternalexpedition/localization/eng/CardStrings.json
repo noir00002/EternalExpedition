@@ -58,5 +58,10 @@
     "NAME": "Crusader",
     "DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed. Exhaust.",
     "UPGRADE_DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed."
+  },
+  "${modID}:Audience": {
+    "NAME": "Audience",
+    "DESCRIPTION": "Reduce the cost of all cards in your hand by 1 this turn and upgrade them. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Reduce the cost of all cards in your hand by 1 this turn and upgrade them. Exhaust."
   }
 }
