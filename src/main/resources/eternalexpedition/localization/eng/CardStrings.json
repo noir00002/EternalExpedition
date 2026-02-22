@@ -33,5 +33,10 @@
     "NAME": "Flail Smash",
     "DESCRIPTION": "Deal !D! damage. Gain Strength equal to your Determination.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Gain Strength equal to your Determination."
+  },
+  "${modID}:Claim": {
+    "NAME": "Claim",
+    "DESCRIPTION": "Deal !D! damage. Draw cards equal to your Determination.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Draw cards equal to your Determination."
   }
 }
