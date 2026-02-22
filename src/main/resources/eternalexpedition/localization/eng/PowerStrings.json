@@ -11,5 +11,12 @@
       "At the end of your turn, heal ",
       " HP."
     ]
+  },
+  "${modID}:DivineSense": {
+    "NAME": "Divine Sense",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain ",
+      " Determination."
+    ]
   }
 }

@@ -38,5 +38,15 @@
     "NAME": "Claim",
     "DESCRIPTION": "Deal !D! damage. Draw cards equal to your Determination.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Draw cards equal to your Determination."
+  },
+  "${modID}:ResoluteShield": {
+    "NAME": "Resolute Shield",
+    "DESCRIPTION": "Gain !B! !keyword:block!. Gain 1 Determination.",
+    "UPGRADE_DESCRIPTION": "Gain !B! !keyword:block!. Gain 1 Determination."
+  },
+  "${modID}:DivineSenseOfDetermination": {
+    "NAME": "Divine Sense of Determination",
+    "DESCRIPTION": "At the start of each turn, gain !M! Determination.",
+    "UPGRADE_DESCRIPTION": "At the start of each turn, gain !M! Determination."
   }
 }
