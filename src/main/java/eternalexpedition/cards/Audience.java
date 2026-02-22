@@ -1,6 +1,5 @@
 package eternalexpedition.cards;
 
-import com.megacrit.cardcrawl.actions.utility.UpgradeAllCardsInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -13,7 +12,7 @@ public class Audience extends BaseCard {
             Paladin.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.RARE,
-            CardTarget.NONE,
+            CardTarget.SELF,
             3
     );
 
@@ -24,12 +23,13 @@ public class Audience extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // Reduce cost of all hand cards by 1 this turn
         for (AbstractCard card : p.hand.group) {
             card.modifyCostForTurn(-1);
+            if (!card.upgraded) {
+                card.upgrade();
+                card.superFlash();
+            }
         }
-        // Upgrade all hand cards
-        addToBot(new UpgradeAllCardsInHandAction(p));
     }
 
     @Override
