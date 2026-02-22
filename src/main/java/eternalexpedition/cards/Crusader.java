@@ -1,7 +1,7 @@
 package eternalexpedition.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -32,16 +32,19 @@ public class Crusader extends BaseCard {
         int total = 0;
 
         if (p.hasPower(WeakPower.POWER_ID)) {
-            total += p.getPower(WeakPower.POWER_ID).amount;
-            addToBot(new RemoveSpecificPowerAction(p, p, WeakPower.POWER_ID));
+            int amt = p.getPower(WeakPower.POWER_ID).amount;
+            total += amt;
+            addToBot(new ReducePowerAction(p, p, WeakPower.POWER_ID, amt));
         }
         if (p.hasPower(VulnerablePower.POWER_ID)) {
-            total += p.getPower(VulnerablePower.POWER_ID).amount;
-            addToBot(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
+            int amt = p.getPower(VulnerablePower.POWER_ID).amount;
+            total += amt;
+            addToBot(new ReducePowerAction(p, p, VulnerablePower.POWER_ID, amt));
         }
         if (p.hasPower(FrailPower.POWER_ID)) {
-            total += p.getPower(FrailPower.POWER_ID).amount;
-            addToBot(new RemoveSpecificPowerAction(p, p, FrailPower.POWER_ID));
+            int amt = p.getPower(FrailPower.POWER_ID).amount;
+            total += amt;
+            addToBot(new ReducePowerAction(p, p, FrailPower.POWER_ID, amt));
         }
 
         if (total > 0) {
