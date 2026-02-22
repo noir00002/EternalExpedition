@@ -28,5 +28,10 @@
     "NAME": "Inner Fortitude",
     "DESCRIPTION": "Draw !M! cards.",
     "UPGRADE_DESCRIPTION": "Draw !M! cards."
+  },
+  "${modID}:FlailSmash": {
+    "NAME": "Flail Smash",
+    "DESCRIPTION": "Deal !D! damage. Gain Strength equal to your Determination.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Gain Strength equal to your Determination."
   }
 }
