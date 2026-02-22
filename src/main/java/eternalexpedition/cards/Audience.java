@@ -24,10 +24,12 @@ public class Audience extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractCard card : p.hand.group) {
-            card.modifyCostForTurn(-1);
+            if (card.costForTurn > 0) {
+                card.costForTurn--;
+                card.isCostModified = true;
+            }
             if (!card.upgraded) {
                 card.upgrade();
-                card.superFlash();
             }
         }
     }
