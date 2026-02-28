@@ -1,8 +1,8 @@
 package eternalexpedition.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -17,8 +17,8 @@ import java.util.Arrays;
 public class BurningWill extends BaseCard {
     public static final String ID = makeID("BurningWill");
     private static final int COST = 2;
-    private static final int DAMAGE_PER_STACK = 7;
-    private static final int DAMAGE_PER_STACK_UPGRADE = 3; // upgraded: 10 per stack
+    private static final int MULTIPLIER = 4;
+    private static final int MULTIPLIER_UPGRADE = 2; // upgraded: 6
 
     private static final CardStats INFO = new CardStats(
             Paladin.Meta.CARD_COLOR,
@@ -30,7 +30,7 @@ public class BurningWill extends BaseCard {
 
     public BurningWill() {
         super(ID, INFO);
-        setMagic(DAMAGE_PER_STACK, DAMAGE_PER_STACK_UPGRADE);
+        setMagic(MULTIPLIER, MULTIPLIER_UPGRADE);
         this.baseDamage = this.damage = 0;
     }
 
@@ -56,13 +56,12 @@ public class BurningWill extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // Build damage array manually — all enemies take equal damage (this.damage already has strength applied)
+        addToBot(new ExhaustAction(1, false, false));
         int count = AbstractDungeon.getCurrRoom().monsters.monsters.size();
         int[] dmgs = new int[count];
         Arrays.fill(dmgs, this.damage);
         addToBot(new DamageAllEnemiesAction(p, dmgs, damageTypeForTurn,
                 AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new ApplyPowerAction(p, p, new DeterminationPower(p, 1), 1));
     }
 
     @Override
