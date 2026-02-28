@@ -51,8 +51,8 @@
   },
   "${modID}:PerformPower": {
     "NAME": "Perform Power",
-    "DESCRIPTION": "Apply Weak and Vulnerable to ALL enemies equal to your Determination.",
-    "UPGRADE_DESCRIPTION": "Apply Weak and Vulnerable to ALL enemies equal to your Determination."
+    "DESCRIPTION": "If you have more than 2 Determination, lose 1 Determination and apply 2 Fear to ALL enemies. NL On Exhaust: Draw 1 card.",
+    "UPGRADE_DESCRIPTION": "If you have more than 2 Determination, lose 1 Determination and apply 2 Fear to ALL enemies. NL On Exhaust: Draw 1 card."
   },
   "${modID}:Crusader": {
     "NAME": "Crusader",

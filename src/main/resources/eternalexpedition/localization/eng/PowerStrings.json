@@ -18,5 +18,12 @@
       "At the start of your turn, gain ",
       " Determination."
     ]
+  },
+  "${modID}:Fear": {
+    "NAME": "Fear",
+    "DESCRIPTIONS": [
+      "At the start of each turn, gain ",
+      " Vulnerable, Frail, and Weak, then lose 1 stack."
+    ]
   }
 }
