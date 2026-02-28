@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="PaladinChar.png" width="1024" height="1536" pivot_x="0.5" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="Idle" length="3000" interval="100" looping="true">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="body">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0" y="0" scale_x="0.2" scale_y="0.2"/>
+                </key>
+                <key id="1" time="1500" spin="0">
+                    <object folder="0" file="0" x="0" y="15" scale_x="0.2" scale_y="0.2"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

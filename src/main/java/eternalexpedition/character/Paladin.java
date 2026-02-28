@@ -116,7 +116,7 @@ public class Paladin extends CustomPlayer {
     public Paladin() {
         super(getNames()[0], Meta.PALADIN,
                 new CustomEnergyOrb(orbTextures, EEMod.characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
-                new SpriterAnimation(EEMod.characterPath("animation/default.scml"))); //Animation
+                new SpriterAnimation(EEMod.characterPath("animation/Paladin.scml"))); //Animation
 
         initializeClass(null,
                 SHOULDER_2,
