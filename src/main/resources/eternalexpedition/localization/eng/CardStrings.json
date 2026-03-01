@@ -51,8 +51,8 @@
   },
   "${modID}:Crusader": {
     "NAME": "Crusader",
-    "DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination equal to the total stacks removed."
+    "DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination and heal HP equal to the total stacks removed. NL Exhaust all Curses and Statuses in your hand. Gain Determination and draw cards equal to the number exhausted. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Remove all Weak, Vulnerable, and Frail from yourself. Gain Determination and heal HP equal to the total stacks removed. NL Exhaust all Curses and Statuses in your hand. Gain Determination and draw cards equal to the number exhausted."
   },
   "${modID}:Audience": {
     "NAME": "Audience",
