@@ -59,8 +59,8 @@ public class ExhaustAndDamageAction extends AbstractGameAction {
         AbstractPower power = player.getPower(DeterminationPower.ID);
         if (power != null) det = power.amount;
 
-        // Formula: (count + 1) * 1.1 * (100 + det) / 100
-        int dmg = (int) ((count + 1) * 1.1 * (100 + det) / 100.0);
+        // Formula: 5 * (count + 1) * 1.1 * (100 + det) / 100
+        int dmg = (int) (5 * (count + 1) * 1.1 * (100 + det) / 100.0);
 
         for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!monster.isDeadOrEscaped()) {
