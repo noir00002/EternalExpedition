@@ -63,5 +63,10 @@
     "NAME": "Audience",
     "DESCRIPTION": "Reduce the cost of all cards in your hand by 1 this turn and upgrade them. Exhaust.",
     "UPGRADE_DESCRIPTION": "Reduce the cost of all cards in your hand by 1 this turn and upgrade them. Exhaust."
+  },
+  "${modID}:InHisName": {
+    "NAME": "In His Name",
+    "DESCRIPTION": "Cost: 30 / Determination. NL Exhaust any number of cards from your hand. Deal (exhausted+1) x 1.1 x (100+Determination) / 100 damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "Cost: 30 / Determination. NL Exhaust any number of cards from your hand. Deal (exhausted+1) x 1.1 x (100+Determination) / 100 damage to ALL enemies."
   }
 }
